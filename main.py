@@ -1,4 +1,6 @@
 import sys
+from stats import chars_dict_to_sorted_list, count_character_population
+
 if len(sys.argv) != 2:
     print("Usage: python3 main.py <path_to_book>")
     sys.exit(1)
@@ -15,7 +17,9 @@ def main():
     file_path = sys.argv[1]
     file_content = get_book_text(file_path)
     list_of_letters = pretty_counter(file_content)
-    
+    char_dict = count_character_population(file_content)
+    sorted_list = chars_dict_to_sorted_list(char_dict)
+
     print(
     f"============ BOOKBOT ============\n"
     f"Analyzing book found at {file_path}...\n"
@@ -26,6 +30,8 @@ def main():
     for item in list_of_letters:
         if item["char"].isalpha():
             print(f'{item["char"]}: {item["num"]}')
+    print(f"{sorted_list}\n")
+
     print("============= END ===============")
     return
     

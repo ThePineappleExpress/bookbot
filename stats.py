@@ -9,6 +9,16 @@ def split_to_words(file_content):
 
     return num_words 
 
+def sort_on(input: tuple[str, int]) -> int:
+    return input[1]
+
+def chars_dict_to_sorted_list(input: dict[str, int]) -> list[tuple[str, int]]:
+    empty_list = []
+    for key, value in input.items():
+        empty_list.append((key, value))
+    sorted_list = sorted(empty_list, key=sort_on, reverse=True)
+    return sorted_list
+        
 
 
 def count_character_population(file_content):
